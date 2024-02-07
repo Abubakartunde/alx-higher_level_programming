@@ -5,18 +5,17 @@ Created on Tru Jun 3 15:13:37 2020
 
 @author: Robinson Montes
 """
-import json
 
 
-def load_from_json_file(filename):
+def class_to_json(obj):
     """
-    Loads an object from json file
+    Creates a json representation of an object
 
     Arguments:
-        filename (str): The name of the output file
+        obj (obj): The object inputted to create a class
 
     Return:
-        A file with a text in jason format
+        A jason representation
     """
-    with open(filename, encoding='utf-8') as file:
-        return (json.loads(file.read()))
+    return {key: value for (key, value) in obj.__dict__.items()
+            if key in list(obj.__dict__.keys())}
